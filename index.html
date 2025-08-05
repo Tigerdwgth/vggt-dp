@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="VGGT-DP: Generalizable Robot Control via Vision Foundation Models">
+  <meta name="keywords" content="VGGT-DP, Visuomotor Policy, Robot Control, Vision Foundation Models">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VGGT-DP: Generalizable Robot Control via Vision Foundation Models</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <!-- <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">VGGT-DP: Generalizable Robot Control via Vision Foundation Models</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="#">Shijia Ge</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+              <a href="#">Yinxin Zhang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="#">Shuzhao Xie</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Weixiang Zhang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Mingcai Zhou</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Zhi Wang</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Tsinghua University</span>
+            <span class="author-block"><sup>2</sup>Casbot</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Coming Soon placeholders for now -->
+              <!-- arXiv Link. -->
+              <!-- <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser video section - commented out for now -->
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">VGGT-DP</span> enables generalizable robot control
+        via vision foundation models with proprioceptive feedback.
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- Results carousel section - commented out for now -->
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-manipulation1">
+          <video poster="" id="manipulation1" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/manipulation1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-manipulation2">
+          <video poster="" id="manipulation2" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/manipulation2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-metaworld1">
+          <video poster="" id="metaworld1" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/metaworld1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-metaworld2">
+          <video poster="" id="metaworld2" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/metaworld2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Main Figure -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <img src="./static/main.jpg"
+             class="interpolation-image"
+             alt="VGGT-DP method overview"
+             style="max-width: 100%; height: auto;"/>
+        <p class="is-size-6 has-text-grey" style="margin-top: 0.5rem;">
+          Overview of the VGGT-DP framework for generalizable robot control via vision foundation models.
+        </p>
+      </div>
+    </div>
+    <!--/ Main Figure -->
+
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Visual imitation learning frameworks allow robots to learn manipulation skills from expert demonstrations. While existing approaches mainly focus on policy design, they often neglect the structure and capacity of visual encoders—limiting spatial understanding and generalization.
+          </p>
+          <p>
+            Inspired by biological vision systems, which rely on both visual and proprioceptive cues for robust control, we propose <strong>VGGT-DP</strong>, a visuomotor policy framework that integrates geometric priors from a pretrained 3D perception model with proprioceptive feedback. We adopt the Visual Geometry Grounded Transformer (VGGT) as the visual encoder and introduce a <em>proprioception-guided visual learning</em> strategy to align perception with internal robot states, improving spatial grounding and closed-loop control.
+          </p>
+          <p>
+            To reduce inference latency, we design a <em>frame-wise token reuse mechanism</em> that compacts multi-view tokens into an efficient spatial representation. We further apply <em>random token pruning</em> to enhance policy robustness and reduce overfitting.
+          </p>
+          <p>
+            Experiments on challenging MetaWorld tasks show that VGGT-DP significantly outperforms strong baselines such as DP and DP3, particularly in precision-critical and long-horizon scenarios.
+          </p>
+          <p>
+            <strong>Keywords:</strong> manipulation, visuomotor policy, vision for robotics, representation learning
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video - commented out for now -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Method and Results sections - commented out for now -->
+    <!-- <div class="columns is-centered">
+
+      <!-- Method Overview. -->
+      <!-- <div class="column">
+        <div class="content">
+          <h2 class="title is-3">VGGT Visual Encoder</h2>
+          <p>
+            Our method leverages the Visual Geometry Grounded Transformer (VGGT) as the visual encoder,
+            which provides strong geometric priors from pretrained 3D perception models for better spatial understanding.
+          </p>
+          <video id="vggt-demo" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/vggt-demo.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div> -->
+      <!--/ Method Overview. -->
+
+      <!-- Proprioceptive Integration. -->
+      <!-- <div class="column">
+        <h2 class="title is-3">Proprioceptive Integration</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              Our proprioception-guided visual learning strategy aligns visual perception with internal robot states,
+              enabling more robust closed-loop control and spatial grounding.
+            </p>
+            <video id="proprioception-video" controls playsinline height="100%">
+              <source src="./static/videos/proprioception.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+
+        </div>
+      </div>
+    </div> -->
+    <!--/ Method and Results. -->
+
+    <!-- Method Details and Experiments sections - commented out for now -->
+    <!-- <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method Details</h2>
+
+        <!-- Frame-wise Token Reuse. -->
+        <!-- <h3 class="title is-4">Frame-wise Token Reuse Mechanism</h3>
+        <div class="content has-text-justified">
+          <p>
+            To reduce inference latency, we design a frame-wise token reuse mechanism that compacts 
+            multi-view tokens into an efficient spatial representation, maintaining performance while 
+            improving computational efficiency.
+          </p>
+        </div> -->
+
+        <!-- Random Token Pruning. -->
+        <!-- <h3 class="title is-4">Random Token Pruning</h3>
+        <div class="content has-text-justified">
+          <p>
+            We apply random token pruning during training to enhance policy robustness and reduce overfitting,
+            enabling better generalization to unseen scenarios and improved manipulation performance.
+          </p>
+        </div> -->
+
+        <!-- MetaWorld Results. -->
+        <!-- <h3 class="title is-4">MetaWorld Experimental Results</h3>
+        <div class="content has-text-justified">
+          <p>
+            Experiments on challenging MetaWorld tasks demonstrate that VGGT-DP significantly outperforms 
+            strong baselines such as DP and DP3, particularly excelling in precision-critical and 
+            long-horizon manipulation scenarios.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="results-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="75%">
+            <source src="./static/videos/metaworld-results.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+
+      <!-- </div>
+    </div> -->
+    <!--/ Method Details and Experiments. -->
+
+
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Work</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            Our work builds upon several important areas of research in visuomotor control and robot learning.
+          </p>
+          <p>
+            <strong>Visual Imitation Learning:</strong> Methods like BC-O, DP, and DP3 have shown promising results in learning manipulation policies from expert demonstrations using visual observations.
+          </p>
+          <p>
+            <strong>Vision Foundation Models for Robotics:</strong> Recent works have explored leveraging pretrained vision models like CLIP, DINOv2, and specialized 3D perception models for robotic tasks.
+          </p>
+          <p>
+            <strong>Proprioceptive Integration:</strong> Combining visual and proprioceptive information has been shown to improve robotic control, inspired by biological sensorimotor systems.
+          </p>
+          <p>
+            <strong>Transformer Architectures for Robotics:</strong> Vision transformers and their variants have demonstrated strong performance in various robotic perception and control tasks, particularly for spatial understanding and long-horizon planning.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{ge2025vggtdp,
+  author    = {Ge, Shijia and Zhang, Yinxin and Xie, Shuzhao and Zhang, Weixiang and Zhou, Mingcai and Wang, Zhi},
+  title     = {VGGT-DP: Generalizable Robot Control via Vision Foundation Models},
+  journal   = {AAAI Conference on Artificial Intelligence},
+  year      = {2026},
+  note      = {Under Review}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="#">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="#" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This website template is based on <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+            We thank the authors for sharing their website template.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
