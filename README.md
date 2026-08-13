@@ -73,9 +73,16 @@ The arguments must match the training invocation so that the same run directory
 is resolved. Evaluation loads `checkpoints/latest.ckpt` from that directory and
 rolls out 20 episodes.
 
-> A checkpoint trained with `policy.vggtq=true` can only be loaded with
-> `policy.vggtq=true`, because post-training quantization adds buffers to the
-> encoder state dict.
+> Two settings must match the ones used at training time, otherwise evaluation
+> silently produces garbage rather than failing loudly:
+>
+> - `policy.vggtq` -- post-training quantization adds buffers to the encoder
+>   state dict, so a quantized checkpoint only loads with `vggtq=true`.
+> - `policy.flow_matching` -- when true the action is sampled with MeanFlow
+>   instead of the DDIM scheduler. A DDIM-trained policy sampled with MeanFlow
+>   reaches 0% success.
+>
+> Both default to `false`, which is the paper configuration.
 
 ## Results
 

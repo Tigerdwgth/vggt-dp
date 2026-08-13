@@ -39,5 +39,6 @@ def test_paper_defaults():
     cfg = _compose("metaworld_hand-insert")
     assert cfg.policy.enc_type == "vggt"
     assert cfg.policy.vggtq is False
+    assert cfg.policy.flow_matching is False
     assert cfg.policy.vggt_depth == 24
     assert cfg.n_obs_steps == 2 and cfg.horizon == 16 and cfg.n_action_steps == 8

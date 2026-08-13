@@ -30,11 +30,16 @@ def test_dp_policy_exposes_encoder():
     assert hasattr(DPEncoder, "forward")
 
 
-def test_no_quantization_by_default():
-    """vggtq 必须默认关闭：论文之前的版本默认 True，会静默量化编码器。"""
+def test_paper_defaults_are_opt_in():
+    """两个历史陷阱：vggtq 和 flow_matching 曾默认 True。
+
+    vggtq=True 会静默 int4 量化编码器，flow_matching=True 会把采样从 DDIM
+    换成 MeanFlow。任何一个默认打开，旧 checkpoint 都会加载失败或跑出 0 成功率。
+    """
     import inspect
 
     from diffusion_policy_3d.policy.dp import DP, DPEncoder
 
-    for cls in (DP, DPEncoder):
-        assert inspect.signature(cls.__init__).parameters["vggtq"].default is False
+    assert inspect.signature(DP.__init__).parameters["vggtq"].default is False
+    assert inspect.signature(DP.__init__).parameters["flow_matching"].default is False
+    assert inspect.signature(DPEncoder.__init__).parameters["vggtq"].default is False

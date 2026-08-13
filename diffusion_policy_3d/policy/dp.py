@@ -53,7 +53,7 @@ class DP(BasePolicy):
             mean_and_linear=False,
             vggt_depth=24,
             transformer_projector_depth=2,
-            flow_matching=True,
+            flow_matching=False,
             vggtq=False,
             **kwargs):
         super().__init__()
