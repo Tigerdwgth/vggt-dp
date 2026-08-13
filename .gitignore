@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# experiment artifacts
+data/
+outputs/
+wandb/
+*.ckpt
+*.zarr/
+*.mp4
+*.log
+
+# third-party checkouts
+third_party/
+
+.vscode/
+.idea/
+.DS_Store
