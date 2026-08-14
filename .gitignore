@@ -14,8 +14,8 @@ wandb/
 *.mp4
 *.log
 
-# third-party checkouts
-third_party/
+# third-party checkouts (also matches a symlink pointing at a local checkout)
+third_party
 
 .vscode/
 .idea/
