@@ -123,6 +123,22 @@ diffusion_policy_3d/
   env_runner/metaworld_runner.py           rollout and success bookkeeping
 ```
 
+## Citation
+
+If you find this work useful, please cite:
+
+```bibtex
+@misc{ge2026vggtdpgeneralizablerobotcontrol,
+      title={VGGT-DP: Generalizable Robot Control via Vision Foundation Models},
+      author={Shijia Ge and Yijun Liu and Yinxin Zhang and Shuzhao Xie and Weixiang Zhang and Mingcai Zhou and Zhi Wang},
+      year={2026},
+      eprint={2509.18778},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2509.18778},
+}
+```
+
 ## Acknowledgement
 
 This code builds on [3D Diffusion Policy](https://github.com/YanjieZe/3D-Diffusion-Policy)
