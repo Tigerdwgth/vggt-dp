@@ -1,14 +1,15 @@
 # VGGT-DP
 
+[![arXiv](https://img.shields.io/badge/arXiv-2509.18778-b31b1b.svg)](https://arxiv.org/abs/2509.18778)
+
+Official implementation of [**VGGT-DP: Generalizable Robot Control via Vision Foundation Models**](https://arxiv.org/abs/2509.18778).
+
 **Visual Geometry Grounded Diffusion Policy (VGGT-DP)** is a visual imitation
 learning algorithm that uses the frozen [VGGT](https://github.com/facebookresearch/vggt)
 aggregator as a geometry-aware visual prior for a diffusion policy. This
 repository contains the model, training and evaluation code for the MetaWorld
 experiments reported in the paper. It is built on top of
 [3D Diffusion Policy (DP3)](https://github.com/YanjieZe/3D-Diffusion-Policy).
-
-Pretrained policy checkpoints are **not** released. The VGGT-1B encoder weights
-are pulled from the Hugging Face Hub at runtime.
 
 ## Method
 
