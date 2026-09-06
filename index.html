@@ -2,11 +2,104 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-        content="VGGT-DP: Generalizable Robot Control via Vision Foundation Models">
-  <meta name="keywords" content="VGGT-DP, Visuomotor Policy, Robot Control, Vision Foundation Models">
+  <meta name="description" content="VGGT-DP uses the VGGT vision foundation model as a frozen geometry-aware encoder for a diffusion policy, combining 3D geometric priors with proprioceptive feedback for generalizable robot manipulation. Outperforms DP and DP3 on MetaWorld.">
+  <meta name="keywords" content="VGGT-DP, VGGT, Vision Foundation Model, Diffusion Policy, DP3, Visuomotor Policy, Robot Manipulation, Imitation Learning, MetaWorld, Robot Learning, 3D Geometry, Robot Control">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>VGGT-DP: Generalizable Robot Control via Vision Foundation Models</title>
+
+  <link rel="canonical" href="https://tigerdwgth.github.io/vggt-dp/">
+
+  <!-- Highwire Press tags: 这是 Google Scholar 索引论文页面的标准入口，缺了它
+       Scholar 基本不会把这个页面和论文关联起来 -->
+  <meta name="citation_title" content="VGGT-DP: Generalizable Robot Control via Vision Foundation Models">
+  <meta name="citation_author" content="Ge, Shijia">
+  <meta name="citation_author" content="Liu, Yijun">
+  <meta name="citation_author" content="Zhang, Yinxin">
+  <meta name="citation_author" content="Xie, Shuzhao">
+  <meta name="citation_author" content="Zhang, Weixiang">
+  <meta name="citation_author" content="Zhou, Mingcai">
+  <meta name="citation_author" content="Wang, Zhi">
+  <meta name="citation_publication_date" content="2025/09/23">
+  <meta name="citation_online_date" content="2025/09/23">
+  <meta name="citation_arxiv_id" content="2509.18778">
+  <meta name="citation_abstract_html_url" content="https://arxiv.org/abs/2509.18778">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2509.18778">
+  <meta name="citation_technical_report_institution" content="Tsinghua University">
+
+  <!-- Open Graph: 决定链接被分享到 X / 微信 / Slack 时有没有预览卡片 -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="VGGT-DP">
+  <meta property="og:title" content="VGGT-DP: Generalizable Robot Control via Vision Foundation Models">
+  <meta property="og:description" content="VGGT-DP uses the VGGT vision foundation model as a frozen geometry-aware encoder for a diffusion policy, combining 3D geometric priors with proprioceptive feedback for generalizable robot manipulation. Outperforms DP and DP3 on MetaWorld.">
+  <meta property="og:url" content="https://tigerdwgth.github.io/vggt-dp/">
+  <meta property="og:image" content="https://tigerdwgth.github.io/vggt-dp/static/main.jpg">
+  <meta property="og:image:width" content="2667">
+  <meta property="og:image:height" content="1500">
+  <meta property="og:image:alt" content="VGGT-DP method overview">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VGGT-DP: Generalizable Robot Control via Vision Foundation Models">
+  <meta name="twitter:description" content="VGGT-DP uses the VGGT vision foundation model as a frozen geometry-aware encoder for a diffusion policy, combining 3D geometric priors with proprioceptive feedback for generalizable robot manipulation. Outperforms DP and DP3 on MetaWorld.">
+  <meta name="twitter:image" content="https://tigerdwgth.github.io/vggt-dp/static/main.jpg">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "VGGT-DP: Generalizable Robot Control via Vision Foundation Models",
+  "name": "VGGT-DP: Generalizable Robot Control via Vision Foundation Models",
+  "abstract": "VGGT-DP uses the VGGT vision foundation model as a frozen geometry-aware encoder for a diffusion policy, combining 3D geometric priors with proprioceptive feedback for generalizable robot manipulation. Outperforms DP and DP3 on MetaWorld.",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Shijia Ge"
+    },
+    {
+      "@type": "Person",
+      "name": "Yijun Liu"
+    },
+    {
+      "@type": "Person",
+      "name": "Yinxin Zhang"
+    },
+    {
+      "@type": "Person",
+      "name": "Shuzhao Xie"
+    },
+    {
+      "@type": "Person",
+      "name": "Weixiang Zhang"
+    },
+    {
+      "@type": "Person",
+      "name": "Mingcai Zhou"
+    },
+    {
+      "@type": "Person",
+      "name": "Zhi Wang"
+    }
+  ],
+  "datePublished": "2025-09-23",
+  "dateModified": "2026-08-25",
+  "identifier": "arXiv:2509.18778",
+  "url": "https://tigerdwgth.github.io/vggt-dp/",
+  "sameAs": [
+    "https://arxiv.org/abs/2509.18778",
+    "https://github.com/Tigerdwgth/vggt-dp"
+  ],
+  "image": "https://tigerdwgth.github.io/vggt-dp/static/main.jpg",
+  "keywords": [
+    "robot learning",
+    "diffusion policy",
+    "vision foundation model",
+    "imitation learning",
+    "MetaWorld",
+    "robot manipulation"
+  ],
+  "license": "https://opensource.org/licenses/MIT",
+  "isAccessibleForFree": true
+}
+  </script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -93,6 +186,8 @@
             <span class="author-block">
               <a href="#">Shijia Ge</a><sup>1,2</sup>,</span>
             <span class="author-block">
+              <a href="#">Yijun Liu</a><sup>1</sup>,</span>
+            <span class="author-block">
               <a href="#">Yinxin Zhang</a><sup>1</sup>,</span>
             <span class="author-block">
               <a href="#">Shuzhao Xie</a><sup>1</sup>,
@@ -117,7 +212,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="#"
+                <a href="https://arxiv.org/pdf/2509.18778"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -127,13 +222,23 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="#"
+                <a href="https://github.com/Tigerdwgth/vggt-dp"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
                   <span>Code</span>
                   </a>
+              </span>
+              <!-- arXiv Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2509.18778"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
               </span>
               <!-- Coming Soon placeholders for now -->
               <!-- arXiv Link. -->

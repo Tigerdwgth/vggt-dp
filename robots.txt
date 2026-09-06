@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tigerdwgth.github.io/vggt-dp/sitemap.xml
