@@ -1,0 +1,59 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+title: "VGGT-DP: Generalizable Robot Control via Vision Foundation Models"
+abstract: >-
+  VGGT-DP is a visuomotor policy framework that integrates geometric priors from
+  a pretrained 3D perception model with proprioceptive feedback. It uses the
+  Visual Geometry Grounded Transformer (VGGT) as a frozen visual encoder for a
+  diffusion policy and is evaluated on MetaWorld manipulation tasks.
+type: software
+license: MIT
+repository-code: "https://github.com/Tigerdwgth/vggt-dp"
+url: "https://tigerdwgth.github.io/vggt-dp/"
+keywords:
+  - robot learning
+  - diffusion policy
+  - vision foundation model
+  - imitation learning
+  - robot manipulation
+  - MetaWorld
+authors:
+  - family-names: Ge
+    given-names: Shijia
+  - family-names: Liu
+    given-names: Yijun
+  - family-names: Zhang
+    given-names: Yinxin
+  - family-names: Xie
+    given-names: Shuzhao
+  - family-names: Zhang
+    given-names: Weixiang
+  - family-names: Zhou
+    given-names: Mingcai
+  - family-names: Wang
+    given-names: Zhi
+preferred-citation:
+  type: article
+  title: "VGGT-DP: Generalizable Robot Control via Vision Foundation Models"
+  year: 2026
+  month: 8
+  journal: "arXiv preprint arXiv:2509.18778"
+  url: "https://arxiv.org/abs/2509.18778"
+  identifiers:
+    - type: other
+      value: "arXiv:2509.18778"
+  authors:
+    - family-names: Ge
+      given-names: Shijia
+    - family-names: Liu
+      given-names: Yijun
+    - family-names: Zhang
+      given-names: Yinxin
+    - family-names: Xie
+      given-names: Shuzhao
+    - family-names: Zhang
+      given-names: Weixiang
+    - family-names: Zhou
+      given-names: Mingcai
+    - family-names: Wang
+      given-names: Zhi
